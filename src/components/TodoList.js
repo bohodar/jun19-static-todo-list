@@ -4,13 +4,14 @@ import TodoItem from './TodoItem';
 function TodoList(props) {
 
   return (
-    <div>
-      <ul>
+    <div className="listWrapper">
+      <ul className="todoList">
         {props.todoItems.map(el => {
           return (
             <TodoItem
               key={el.id}
               todoItem={el}
+              users={props.users}
           />
           )
         })}

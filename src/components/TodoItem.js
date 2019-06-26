@@ -1,23 +1,31 @@
 import React from 'react'
 
   function TodoItem(props) {
-    console.log(props.todoItem);
     const { id, title, userId, completed } = props.todoItem;
-    console.log(title);
     return (
       <li
-        //className="todoListItem"
+        className={completed ? "todoListItem completed" : "todoListItem"}
         key={id}
       >
         <input
           type="checkbox"
-          //className="checkbox"
+          className="checkbox"
           id={"box" + id}
           checked={completed}
+          onChange={() => {}}
         />
-        <label htmlFor={"box" + id}>
-          <span className="todoTitle">
+        <label
+          htmlFor={"box" + id}
+          className="inputsLabel"
+        >
+          <span className="inputsLabel--title">
             {title}
+          </span>
+          <span className="inputsLabel--userName">
+            {props.users
+              .filter(el => el.id === userId)
+              .map(el => el.name)
+            }
           </span>
         </label>
       </li>
